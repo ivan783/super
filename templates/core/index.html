@@ -1,0 +1,99 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% load humanize %}
+{% block extrastyle %}
+
+<meta name="description" content="SuperCasa - Gerente de bienes raíces.
+Ofrece los mejores objetos inmobiliarios y cuida todos los aspectos por ti.
+Servicios ofrecidos: alquiler, venta, compra, consulta y mucho más."/>
+{% endblock %}
+
+{% block title %} | Bienvenido {% endblock %}
+
+{% block content %}
+<!-- Showcase -->
+<section id="showcase">
+  <div class="container text-center">
+    <div class="home-search p-5">
+      <div class="overlay round-corners p-5">
+
+
+        <div class="row col-12 pl-0 ml-0">
+
+          <div class="col-12 col-lg-8 p-0 text-left">
+            <h1 class="display-4 font-weight-bold mb-3">
+              {{ _("La búsqueda de propiedades ahora es tan fácil") }}
+            </h1>
+            <p class="lead mb-5">{{ _("Ofrecemos propiedades extraordinarias en todas las clases de precios.") }}</p>
+          </div>
+
+          <div class="col-4"></div>
+        </div>
+
+
+        {% include 'core/partials/_search.html' %}
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+<!-- Alerts -->
+{% include 'core/partials/_alerts.html' %}
+
+<!-- Listings -->
+<section id="listings" class="my-5">
+  <div class="container">
+    <h2 class="mb-5">
+      {{ _("Últimos listados") }}
+    </h2>
+    <div class="row">
+      {% if listings %}
+      {% for listing in listings %}
+      {% include 'listings/_partials/_listing-box.html' %}
+      {% endfor %}
+      {% else %}
+      <div class="col-md-12">
+        <p>{{ _("No hay anuncios disponibles") }}</p>
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+
+<section id="services" class="py-5 bg-secondary text-white">
+  <div class="container">
+    <div class="row text-center  bg-blur p-5">
+
+      <div class="col-12 col-md-6 col-xl-4">
+        <i class="fas fa-comment fa-4x mr-4"></i>
+        <hr>
+        <h3>{{ _("Comprar") }}</h3>
+        <p>
+          {{ _("Nos encargamos de su propiedad. Podemos apoyarle durante todo el proceso de venta.") }}
+          {{ _("Nos aseguramos de que todo esté bien cuidado.") }}
+        </p>
+      </div>
+      <div class="col-12 col-md-6 col-xl-4">
+        <i class="fas fa-home fa-4x mr-4"></i>
+        <hr>
+        <h3>{{ _("Gestión de la propiedad") }}</h3>
+        <p>
+          {{ _("La administración de propiedades es la supervisión de bienes raíces. Casas unifamiliares, unidades de condominio y centros comerciales.") }}
+        </p>
+      </div>
+      <div class="col-12 col-md-6 col-xl-4">
+        <i class="fas fa-suitcase fa-4x mr-4"></i>
+        <hr>
+        <h3>{{ _("Venta & mas venta") }}</h3>
+        <p>{{ _("¿Está pensando en comprar una propiedad de inversión? Los bienes raíces han producido a muchas de las personas más ricas del mundo, por lo que hay muchas razones para pensar que es una inversión sólida.") }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+{% endblock %}
